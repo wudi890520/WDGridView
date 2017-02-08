@@ -28,8 +28,17 @@ class WDGridView: UIView, UIScrollViewDelegate {
     /// UIPageControl
     let pageControl = WDGridViewPageControl()
     
+    /// UIScrollView
     let scrollView = UIScrollView()
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = UIColor.white
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 extension WDGridView {
@@ -56,7 +65,6 @@ extension WDGridView {
                      titleColor: UIColor = UIColor.black)
         -> WDGridView {
             let gridView = WDGridView()
-            gridView.backgroundColor = UIColor.white
             gridView.wd_width = width
             gridView.scrollView.wd_width = width
             let itemWidth: CGFloat = width / CGFloat(column)
@@ -98,21 +106,8 @@ extension WDGridView {
                 }
                 
                 if rowLimit != 0 {
-                    gridView.scrollView.showsVerticalScrollIndicator = false
-                    gridView.scrollView.showsHorizontalScrollIndicator = false
-                    gridView.addSubview(gridView.scrollView)
-                    gridView.scrollView.delegate = gridView
-                    gridView.scrollView.isPagingEnabled = true
-                    gridView.pageControl.wd_height = 10
-                    gridView.pageControl.currentPage = 0
-                    gridView.pageControl.numberOfPages = Int(gridView.scrollView.contentSize.width / width)
-                    gridView.pageControl.currentPageIndicatorTintColor = UIColor.gray
-                    gridView.pageControl.pageIndicatorTintColor = UIColor.lightGray
-                    gridView.pageControl.wd_bottom = gridView.wd_height-10
-                    gridView.pageControl.wd_centerX = width / 2
-                    gridView.addSubview(gridView.pageControl)
+                    gridView.addPageControl()
                 }
-                
                 
             }else{
                 print("图片与标题数组错误❌")
@@ -156,25 +151,25 @@ extension WDGridView {
     
 }
 
-class WDGridViewPageControl: UIPageControl {
-    override var currentPage: Int {
-        set {
-            super.currentPage = newValue
-            for subviewIndex in 0 ..< subviews.count {
-                let subview = subviews[subviewIndex]
-                let pointHeight: CGFloat = 6
-                
-                subview.frame = CGRect(x: subview.wd_left, y: subview.wd_top, width: pointHeight, height: pointHeight)
-                subview.layer.cornerRadius = pointHeight/2
-                if subviewIndex == newValue {
-                    subview.backgroundColor = UIColor.red
-                }else{
-                    subview.backgroundColor = UIColor.lightGray
-                }
-            }
-        }
-        get {
-            return super.currentPage
-        }
+extension WDGridView {
+    
+    func addPageControl() {
+        
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.delegate = self
+        scrollView.isPagingEnabled = true
+        
+        pageControl.wd_height = 10
+        pageControl.currentPage = 0
+        pageControl.numberOfPages = Int(scrollView.contentSize.width / wd_width)
+        pageControl.currentPageIndicatorTintColor = UIColor.gray
+        pageControl.pageIndicatorTintColor = UIColor.lightGray
+        pageControl.wd_bottom = wd_height - 10
+        pageControl.wd_centerX = wd_width / 2
+        
+        addSubview(scrollView)
+        addSubview(pageControl)
     }
+    
 }

@@ -38,12 +38,12 @@ extension ViewController {
         let images = [#imageLiteral(resourceName: "homeItemQR"),#imageLiteral(resourceName: "homeItemFindGoods"),#imageLiteral(resourceName: "homeItemHistory"),#imageLiteral(resourceName: "homeItemShare"),#imageLiteral(resourceName: "homeItemUserInfo"),#imageLiteral(resourceName: "homeItemMessage"),#imageLiteral(resourceName: "homeItemSystemSetting"),#imageLiteral(resourceName: "homeItemSystemSetting"),#imageLiteral(resourceName: "homeItemSystemSetting"),#imageLiteral(resourceName: "homeItemSystemSetting")]
         let titles = ["扫码找单","找回头车","历史运单","邀请好友","我的资料","消息通知","系统设置","系统设置","系统设置","系统设置"]
         
-        let itemHeight = UIScreen.main.bounds.width / 4 - 30
+        let itemHeight = UIScreen.main.bounds.width / 4 - 10
         
         
         let gridView = WDGridView.creat(images: images,
                                         titles: titles,
-                                        column: 4,
+                                        column: 3,
                                         itemHeight: itemHeight,
                                         titleFont: 12)
         gridView.wd_top = 40
