@@ -68,7 +68,7 @@ extension ViewController {
     }
     
     func initGrid1() {
-        let images = [#imageLiteral(resourceName: "homeItemQR"),#imageLiteral(resourceName: "homeItemFindGoods"),#imageLiteral(resourceName: "homeItemHistory"),#imageLiteral(resourceName: "homeItemShare"),#imageLiteral(resourceName: "homeItemUserInfo"),#imageLiteral(resourceName: "homeItemMessage"),#imageLiteral(resourceName: "homeItemSystemSetting"),#imageLiteral(resourceName: "homeItemQR"),#imageLiteral(resourceName: "homeItemFindGoods"),#imageLiteral(resourceName: "homeItemHistory"),#imageLiteral(resourceName: "homeItemShare"),#imageLiteral(resourceName: "homeItemUserInfo"),#imageLiteral(resourceName: "homeItemMessage"),#imageLiteral(resourceName: "homeItemSystemSetting")]
+        let images = [#imageLiteral(resourceName: "i0"),#imageLiteral(resourceName: "i1"),#imageLiteral(resourceName: "i2"),#imageLiteral(resourceName: "i3"),#imageLiteral(resourceName: "i4"),#imageLiteral(resourceName: "i5"),#imageLiteral(resourceName: "i6"),#imageLiteral(resourceName: "i0"),#imageLiteral(resourceName: "i1"),#imageLiteral(resourceName: "i2"),#imageLiteral(resourceName: "i3"),#imageLiteral(resourceName: "i4"),#imageLiteral(resourceName: "i5"),#imageLiteral(resourceName: "i6")]
         let titles = ["扫码找单","找回头车","历史运单","邀请好友","我的资料","消息通知","系统设置","扫码找单","找回头车","历史运单","邀请好友","我的资料","消息通知","系统设置"]
         
         let itemHeight = UIScreen.main.bounds.width / 4 - 30

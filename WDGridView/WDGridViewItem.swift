@@ -135,3 +135,26 @@ extension WDGridViewItem {
     }
 
 }
+
+extension WDGridViewItem {
+    func setImageAndTitle(image: UIImage, title: String) {
+        imageView.wd_size = image.size
+        imageView.wd_centerX = wd_width / 2
+        
+        titleLabel.wd_width = wd_width
+        titleLabel.wd_centerX = wd_width / 2
+        titleLabel.wd_height = titleLabel.font.pointSize
+        
+        let totalSpace = wd_height - imageView.wd_height - titleLabel.wd_height
+        let topAndBottomSpace = totalSpace / 5 * 2
+        
+        imageView.wd_top = topAndBottomSpace
+        titleLabel.wd_bottom = wd_height - topAndBottomSpace
+        
+        imageView.image = image
+        titleLabel.text = title
+        
+        button.wd_width = wd_width
+        button.wd_height = wd_height
+    }
+}

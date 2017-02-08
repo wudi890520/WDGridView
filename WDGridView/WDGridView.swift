@@ -77,10 +77,9 @@ extension WDGridView {
                     let item = WDGridViewItem()
                     item.wd_width = itemWidth
                     item.wd_height = aItemHeight
-                    item.image = images[i]
-                    item.title = titles[i]
                     item.titleLabel.font = UIFont.systemFont(ofSize: titleFont)
                     item.titleLabel.textColor = titleColor
+                    item.setImageAndTitle(image: images[i], title: titles[i])
                     item.button.tag = i
                     
                     if rowLimit == 0 {
