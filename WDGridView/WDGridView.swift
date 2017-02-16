@@ -136,7 +136,7 @@ extension WDGridView {
     ///
     /// - Parameter index: index
     /// - Returns: WDGridViewItem
-    func at(index: Int) -> WDGridViewItem {
+    func at(_ index: Int) -> WDGridViewItem {
         return items[index]
     }
     

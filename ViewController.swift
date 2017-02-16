@@ -60,10 +60,9 @@ extension ViewController {
             }
         }
         
-        gridView.at(index: 0).backgroundColor = UIColor.lightGray
-        gridView.at(index: 1).addBadge(fontSize: 8).badgeValue = "热门"
-        gridView.at(index: 4).addPoint(height: 6, color: UIColor.red)
-        gridView.at(index: 5).addBadge().badgeValue = "16"
+        gridView.at(1).addBadge(fontSize: 10).badgeValue = "HOT"
+        gridView.at(4).addPoint(height: 6, color: UIColor.red)
+        gridView.at(5).addBadge().badgeValue = "16"
         grid = gridView
     }
     
@@ -94,7 +93,7 @@ extension ViewController {
 extension ViewController {
     
     func changeMessageBadgeValue() {
-        let messageItem = grid.at(index: 5)
+        let messageItem = grid.at(5)
         
         if messageItem.badgeValue == "0" {
             messageItem.badgeValue = "3"
@@ -107,7 +106,7 @@ extension ViewController {
     
     func changeInfoPointIsHidden() {
         
-        let infoItem = grid.at(index: 4)
+        let infoItem = grid.at(4)
         
         infoItem.isPointHidden = !infoItem.isPointHidden
     }

@@ -12,36 +12,6 @@ private let MAXFLOAT = 0x1.fffffep+127
 
 class WDGridViewItem: UIView {
     
-    /// 图片
-    var image: UIImage {
-        set {
-            imageView.wd_size = newValue.size
-            imageView.wd_bottom = wd_height / 2
-            imageView.wd_centerX = wd_width / 2
-            imageView.image = newValue
-        }
-        get {
-            return imageView.image!
-        }
-    }
-    
-    /// 标题
-    var title: String {
-        set {
-            titleLabel.wd_height = wd_height / 3
-            titleLabel.wd_top = wd_height / 2
-            titleLabel.wd_width = wd_width
-            titleLabel.wd_centerX = wd_width / 2
-            titleLabel.text = newValue
-            
-            button.wd_width = wd_height
-            button.wd_height = wd_height
-        }
-        get {
-            return titleLabel.text!
-        }
-    }
-    
     /// 未读数量
     var badgeValue: String {
         set {
@@ -52,7 +22,13 @@ class WDGridViewItem: UIView {
             var attr = Dictionary<String, Any>()
             attr[NSFontAttributeName] = badge.font
             let rect = NSString(string: newValue).boundingRect(with: CGSize(width: MAXFLOAT, height: MAXFLOAT), options: [NSStringDrawingOptions.usesLineFragmentOrigin, NSStringDrawingOptions.usesFontLeading], attributes: attr, context: nil)
-            badge.wd_width = rect.size.width + 8
+            
+            if newValue.characters.count == 1 {
+                badge.wd_width = badge.wd_height
+            }else{
+                badge.wd_width = rect.size.width + 10
+            }
+            
             badge.wd_centerX = imageView.wd_right
             badge.wd_centerY = imageView.wd_top
         }
@@ -119,7 +95,7 @@ extension WDGridViewItem {
     ///   - fontSize: 文字大小
     ///   - textColor: 文字颜色
     ///   - backgroundColor: 背景颜色
-    func addBadge(fontSize: CGFloat = 10,
+    func addBadge(fontSize: CGFloat = 13,
                   textColor: UIColor = UIColor.white,
                   backgroundColor: UIColor = UIColor.red) -> WDGridViewItem {
         badge.textColor = textColor
